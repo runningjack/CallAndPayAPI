@@ -11,17 +11,23 @@ namespace DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Customer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+           
+            this.Id = 1;
             this.CustomerAccounts = new HashSet<CustomerAccount>();
+            
             this.NextOfKins = new HashSet<NextOfKin>();
             this.Accounts = new HashSet<Account>();
         }
-    
+
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -42,7 +48,7 @@ namespace DAL
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
-    
+
         public virtual AgentMerchant AgentMerchant { get; set; }
         public virtual City City { get; set; }
         public virtual State State { get; set; }

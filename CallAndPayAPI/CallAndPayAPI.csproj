@@ -63,20 +63,28 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.4\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.4\lib\net45\System.Web.Http.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -129,12 +137,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\bigLoader.gif" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Properties\PublishProfiles\callandpay - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\callandpay - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\callandpay - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\callandpay - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CallAndPayWeb.pubxml" />
+    <Content Include="Views\AccountViewModels\Create.cshtml" />
+    <Content Include="Views\AccountViewModels\Delete.cshtml" />
+    <Content Include="Views\AccountViewModels\Details.cshtml" />
+    <Content Include="Views\AccountViewModels\Edit.cshtml" />
+    <Content Include="Views\AccountViewModels\Index.cshtml" />
+    <Content Include="Views\CustomerViewModels\Create.cshtml" />
+    <Content Include="Views\CustomerViewModels\Delete.cshtml" />
+    <Content Include="Views\CustomerViewModels\Details.cshtml" />
+    <Content Include="Views\CustomerViewModels\Edit.cshtml" />
+    <Content Include="Views\CustomerViewModels\Index.cshtml" />
+    <Content Include="Views\CustomerViewModels\_ListCustomerAccountsTable.cshtml" />
+    <Content Include="Views\CustomerViewModels\_ListCustomerNextOfKinsTable.cshtml" />
+    <Content Include="Views\NextOfKinViewModels\Create.cshtml" />
+    <Content Include="Views\NextOfKinViewModels\Delete.cshtml" />
+    <Content Include="Views\NextOfKinViewModels\Details.cshtml" />
+    <Content Include="Views\NextOfKinViewModels\Edit.cshtml" />
+    <Content Include="Views\NextOfKinViewModels\Index.cshtml" />
+    <Content Include="Views\CustomerViewModels\_AddNextOfKinForm.cshtml" />
+    <Content Include="Views\TransactionViewModels\Index.cshtml" />
+    <Content Include="Views\AgentMerchantsViewModels\Create.cshtml" />
+    <Content Include="Views\AgentMerchantsViewModels\Delete.cshtml" />
+    <Content Include="Views\AgentMerchantsViewModels\Details.cshtml" />
+    <Content Include="Views\AgentMerchantsViewModels\Edit.cshtml" />
+    <Content Include="Views\AgentMerchantsViewModels\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -143,9 +179,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AccountViewModelsController.cs" />
+    <Compile Include="Controllers\AgentMerchantsViewModelsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\CustomerViewModelsController.cs" />
+    <Compile Include="Controllers\NextOfKinController.cs" />
+    <Compile Include="Controllers\NextOfKinViewModelsController.cs" />
     <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\TransactionViewModelsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

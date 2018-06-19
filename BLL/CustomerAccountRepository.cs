@@ -32,9 +32,13 @@ namespace BLL
             return Insert(customerAccount);
         }
 
-        public int Update(CustomerAccount customerAccount)
+        public int Modify(CustomerAccount customerAccount)
         {
             return Update(customerAccount);
+        }
+        public int Remove(CustomerAccount account)
+        {
+            return Delete(account);
         }
     }
 }

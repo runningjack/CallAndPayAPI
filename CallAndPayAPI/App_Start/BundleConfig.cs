@@ -1,7 +1,7 @@
 ﻿using System.Web.Optimization;
 using WebHelpers.Mvc5;
 
-namespace CallAndPayWeb.App_Start
+namespace CallAndPayAPI
 {
     public class BundleConfig
     {

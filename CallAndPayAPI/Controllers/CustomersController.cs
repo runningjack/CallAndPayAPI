@@ -47,45 +47,76 @@ namespace CallAndPayAPI.Controllers
 
         // PUT: api/Customers/5
         [AcceptVerbs("POST")]
-        [Route("api/Customers/UpdateCustomer/")]
-        [ResponseType(typeof(void))]
+        [Route("api/Customers/UpdateCustomer")]
+        [ResponseType(typeof(Customer))]
         public async Task<IHttpActionResult> UpdateCustomer(Customer customer)
         {
             //return Ok(customer);
             if (!ModelState.IsValid)
             {
-               // return Json(new { Msg = "Record could not be created Internal Server Error " });
+                // return Json(new { Msg = "Record could not be created Internal Server Error " });
                 return BadRequest(ModelState);
             }
-            var i = _customerRepository.Update(customer);
+            var i = _customerRepository.Modify(customer);
             if (i > 0)
             {
-                return Json(new { Msg = "1" });
+                return Json(new { Success = true, Code = 200, Msg = "Record Successfully Updated", Customer = customer });
             }
             //return StatusCode(HttpStatusCode.NoContent);
-            return Json(new { Msg = "0" });
+            return Json(new { Success = false, Code = 400, Msg = "Record was not Successfully Updated", Customer = customer });
         }
 
         // POST: api/Customers
         [AcceptVerbs("POST")]
-        [Route("api/Customers/PostCustomer/")]
+        [Route("api/Customers/PostCustomer")]
         [ResponseType(typeof(Customer))]
         public async Task<IHttpActionResult> PostCustomer(Customer customer)
         {
-            //return Ok(customer.ToList());
-            return Json(new { Msg = "0" });
+            /***TODO ensure that state, city and agent ids are not strings*/
+            customer.StateId = 24;
+            customer.CityId = 1;
             if (!ModelState.IsValid)
             {
+                //return Ok(customer);
                 return BadRequest(ModelState);
             }
             var i = _customerRepository.Create(customer);
             if (i > 0)
             {
+                //customer
                 //return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
-                return Json(new { Msg = "1" });
+                return Json(new {Success=true, Code=200, Msg = "Record Successfully Created", Customer = customer });
             }
             //return null;
-            return Json(new { Msg = "0" });
+            return Json(new { Success = false, Code = 400, Msg = "Record was not Successfully Created", Customer = customer });
+        }
+
+       //POST: api/Customers
+       [AcceptVerbs("POST")]
+       [Route("api/Customers/PostNextOfKin/{Id}")]
+       [ResponseType(typeof(NextOfKin))]
+        public async Task<IHttpActionResult> PostNextOfKin(NextOfKin nextOfKin,int Id)
+        {
+            //return Json(new { Msg = Id });
+            /***TODO ensure that state, city and agent ids are not strings*/
+            Customer customer = _customerRepository.FindById(Id);
+            nextOfKin.CustomerId = customer.Id;
+           
+           // return Json(new { Msg = customer });
+            if (!ModelState.IsValid)
+            {
+                //return Ok(customer);
+                return BadRequest(ModelState);
+            }
+            NextOfKinRepository nk = new NextOfKinRepository();
+            var i = nk.Create(nextOfKin);
+            if (i > 0)
+            {
+                //return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
+                return Json(new { Success = true, Code = 200, Msg = "Record Successfully Created", Customer = customer });
+            }
+            //return null;
+            return Json(new { Success = false, Code = 400, Msg = "Record was not Successfully Created", Customer = customer });
         }
 
         // DELETE: api/Customers/5

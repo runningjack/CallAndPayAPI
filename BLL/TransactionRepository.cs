@@ -9,7 +9,7 @@ namespace BLL
 {
     public class TransactionRepository : BaseRepository<Transaction>
     {
-        public IEnumerable<TransactionViewModel> ListAccounts()
+        public IEnumerable<TransactionViewModel> ListTransactions()
         {
             IQueryable<Transaction> transactions = GetAll();
             IQueryable<TransactionViewModel> allTransactions = from c in transactions
@@ -41,9 +41,14 @@ namespace BLL
             return Insert(transaction);
         }
 
-        public int Update(Transaction transaction)
+        public int Modify(Transaction transaction)
         {
             return Update(transaction);
+        }
+
+        public int Remove(Transaction transaction)
+        {
+            return Delete(transaction);
         }
     }
 }

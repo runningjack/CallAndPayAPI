@@ -20,6 +20,7 @@ namespace DAL
         public string AccountNumber { get; set; }
         public Nullable<int> AccountId { get; set; }
         public string TransType { get; set; }
+        
         public string LedgerType { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }

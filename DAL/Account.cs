@@ -21,16 +21,16 @@ namespace DAL
         }
     
         public int Id { get; set; }
-        public int? CustomerId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
         public string AccountTitle { get; set; }
         public string AccountType { get; set; }
         public string AccountNumber { get; set; }
-        public decimal? LedgerBalance { get; set; }
-        public decimal? Balance { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+        public Nullable<decimal> LedgerBalance { get; set; }
+        public Nullable<decimal> Balance { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

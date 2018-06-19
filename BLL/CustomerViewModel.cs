@@ -1,6 +1,8 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,11 @@ namespace BLL
 {
     public class CustomerViewModel
     {
+        public CustomerViewModel()
+        {
+          
+        }
+       
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -30,8 +37,8 @@ namespace BLL
         public string CreatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
-        public virtual AgentMerchant AgentMerchant { get; set; }
-        public virtual City City { get; set; }
-        public virtual State State { get; set; }
+        //public virtual AgentMerchant AgentMerchant { get; set; }
+        //public virtual City City { get; set; }
+        //public virtual State State { get; set; }
     }
 }

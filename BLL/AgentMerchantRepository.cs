@@ -53,7 +53,7 @@ namespace BLL
             return Insert(agentDevice);
         }
 
-        public int Update(AgentMerchant agentDevice)
+        public int Modify(AgentMerchant agentDevice)
         {
             return Update(agentDevice);
         }

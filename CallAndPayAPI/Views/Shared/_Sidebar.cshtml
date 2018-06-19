@@ -19,10 +19,16 @@
             <li class="@Url.IsLinkActive("Index", "Home")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
             </li>
-            <li class="@Url.IsLinkActive("AnotherLink", "Home")">
-                <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+            <li class="@Url.IsLinkActive("Index", "CustomerViewModels")">
+                <a href="@Url.Action("Index", "CustomerViewModels")"><i class="fa fa-link"></i> <span>Customers</span></a>
             </li>
-            <li class="treeview">
+            <li class="@Url.IsLinkActive("Index", "AgentMerchantsViewModels")">
+                <a href="@Url.Action("Index", "AgentMerchantsViewModels")"><i class="fa fa-link"></i> <span>Agents</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "TransactionViewModels")">
+                <a href="@Url.Action("Index", "TransactionViewModels")"><i class="fa fa-link"></i> <span>Transactions</span></a>
+            </li>
+            @*<li class="treeview">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Multilevel</span>
                     <span class="pull-right-container">
@@ -33,7 +39,7 @@
                     <li><a href="#">Link in level 2</a></li>
                     <li><a href="#">Link in level 2</a></li>
                 </ul>
-            </li>
+            </li>*@
         </ul>
         @* END Menu *@
     </section>

@@ -40,9 +40,14 @@ namespace BLL
             return Insert(nextOfKin);
         }
 
-        public int Update(NextOfKin nextOfKin)
+        public int Modify(NextOfKin nextOfKin)
         {
             return Update(nextOfKin);
+        }
+
+        public int Remove(NextOfKin nextOfKin)
+        {
+            return Delete(nextOfKin);
         }
     }
 }

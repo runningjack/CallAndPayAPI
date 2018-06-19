@@ -16,8 +16,10 @@ namespace DAL
     public partial class CallAndPayDbContext : DbContext
     {
         public CallAndPayDbContext()
-            : base("name=CallAndPayDbEntities2")
+            : base("name=CallAndPayDbEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,5 +38,15 @@ namespace DAL
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+
+        //public System.Data.Entity.DbSet<BLL.TransactionViewModel> TransactionViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<BLL.NextOfKinViewModel> NextOfKinViewModels { get; set; }
+
+        ///public System.Data.Entity.DbSet<BLL.NextOfKinViewModel> NextOfKinViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<BLL.AccountViewModel> AccountViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<BLL.CustomerViewModel> CustomerViewModels { get; set; }
     }
 }

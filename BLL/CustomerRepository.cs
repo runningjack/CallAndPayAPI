@@ -46,12 +46,20 @@ namespace BLL
 
         public int Create(Customer customer)
         {
+            customer.CreatedAt = DateTime.Now;
+            customer.UpdatedAt = DateTime.Now;
             return Insert(customer);
         }
 
-        public int Update(Customer customer)
+        public int Modify(Customer customer)
         {
+            customer.UpdatedAt = DateTime.Now;
             return Update(customer);
+        }
+
+        public int Remove(Customer account)
+        {
+            return Delete(account);
         }
     }
 }

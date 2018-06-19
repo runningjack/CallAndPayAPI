@@ -8,11 +8,12 @@
         @if (!string.IsNullOrWhiteSpace(ViewBag.Title)) {
             @ViewBag.Title@: -
         }
-        AdminLTE
+        Collo Networks
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    @Styles.Render("~/Bundles/css")
+        @Styles.Render("~/Bundles/css")
+        <script src="~/Content/js/plugins/jquery/jquery-2.2.4.min.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -40,6 +41,18 @@
     </div>
 
     <script src="@RouteJs.RouteJsHandler.HandlerUrl"></script>
+   
     @Scripts.Render("~/Bundles/js")
+    @RenderSection("scripts", required: false)
+
+    <div class="modal" id="myProcess">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="transProcess" style="width:317px; margin:10px auto"><img src='~/Content/img/bigLoader.gif'><h4>Processing Request... Please Wait!</h4></div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 </body>
 </html>

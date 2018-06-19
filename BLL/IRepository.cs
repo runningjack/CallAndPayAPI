@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+    public interface IStringTitle
+    {
+        string Title { get; set; }
+    }
     public interface IRepository<T>
     {
         int Insert(T entity);
@@ -16,7 +20,7 @@ namespace BLL
         int Update(T entity);
         IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate);
         IQueryable<T> GetAll();
-        T GetById(int id);
+        T GetById(object id);
     }
 
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
@@ -45,13 +49,22 @@ namespace BLL
             return _dbContext.Set<TEntity>();
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetById(object id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<TEntity>().Find(id);
+            //return _dbContext.Set<TEntity>().Find(id);
         }
+
+        //public virtual TEntity GetByName(string name)
+        //{
+        //    return (from e in _dbContext.Set<TEntity>()
+        //            where e.Title == name
+        //            select e).SingleOrDefault();
+        //}
 
         public int Insert(TEntity entity)
         {
+           
             _dbContext.Set<TEntity>().Add(entity);
             _s = _dbContext.SaveChanges();
             if (_s > 0)
@@ -63,12 +76,16 @@ namespace BLL
 
         public int Update(TEntity entity)
         {
+           // _dbContext.Set<TEntity>().Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
-            _s = _dbContext.SaveChanges();
-            if (_s > 0)
             {
-                return 1;
-            }
+                _s = _dbContext.SaveChanges();
+                if (_s > 0)
+                {
+                    return 1;
+                }
+           }
+            
             return 0;
         }
 
